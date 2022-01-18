@@ -1,6 +1,6 @@
 #add_library(MIT_lib Faddeeva.c)
 #set_property(TARGET MIT_lib PROPERTY C_STANDARD 99)
-##add_library(errfun errfun.f90)
+##add_library(errfun faddeeva_fortran_interface.f90)
 #
 #add_executable(errfun erf_MIT.f90)
 #target_link_libraries(errfun MIT_lib)
@@ -16,7 +16,7 @@ SET(CMAKE_Fortran_MODULE_DIRECTORY "${PROJECT_BINARY_DIR}/modules")
 set(LIB Faddeeva_package)
 add_library(${LIB}
         Faddeeva.c
-        errfun.f90
+        faddeeva_fortran_interface.f90
         )
 add_library(${NAMESPACE}${LIB} ALIAS ${LIB})
 set_property(TARGET ${LIB} PROPERTY C_STANDARD 99)
