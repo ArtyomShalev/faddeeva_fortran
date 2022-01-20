@@ -4,5 +4,5 @@ project(${PROJECTNAME} Fortran)
 
 #enable_language(Fortran)
 add_subdirectory(errfun_MIT)
-add_executable(main main.f90)
+add_executable(main example.f90)
 target_link_libraries(main Faddeeva_package)

@@ -1,19 +1,21 @@
 program main
     use faddeeva_fortran_interface
     integer, parameter :: dp=kind(0.d0)
-!    complex(dp), allocatable :: z(:)
     complex(dp) :: z
-!    complex(dp), allocatable :: result(:)
     complex(dp) :: result
     real(dp) :: relerr
 
+
+    !TODO maybe sub example(function, 'function')(z , relerr,
+    {}
+
     !=======================================================================
-    !THE FADDEEVA FUNCTION
-    !Usage: result = Faddeeva_w(z, relerr)
-    !Compute: w(z) = exp(-z*z)*erfc(-i*z)
-    !z:  a complex value (not an array)
+    ! THE FADDEEVA FUNCTION
+    ! Usage: result = Faddeeva_w(z, relerr)
+    ! Compute: w(z) = exp(-z*z)*erfc(-i*z)
+    ! z:  a complex value (not an array)
     !-----------------------------------------------------------------------
-    !Here is an example of calling this function:
+    ! Here is an example of calling this function:
 !    allocate(z(1))
 !    allocate(result(1))
 !    z = ( cmplx(1.0_dp, 0.0_dp, kind=dp), cmplx(5.0_dp, 0.0_dp, kind=dp) )
@@ -31,10 +33,13 @@ program main
     !Compute: erf(z), the error function
     !z:  a complex value (not an array)
     !-----------------------------------------------------------------------
+    !TODO delete all obvious
+
     !Here is an example of calling this function:
     z = cmplx(1.0_dp, 15.0_dp, kind=dp)
     relerr = 1.0e-14_dp
     result = Faddeeva_erf(z, relerr)
+    ! faddeva_w, arg and res =
     write(*,*) result
 
     !=======================================================================
