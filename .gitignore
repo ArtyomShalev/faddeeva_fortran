@@ -10,7 +10,6 @@ CMakeCache.txt
 cmake
 *.cbp
 *.a
-main
 
 #TODO modules in gitignore
 modules
