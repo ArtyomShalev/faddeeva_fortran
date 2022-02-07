@@ -1,5 +1,5 @@
 module faddeeva_fortran_interface
-!    use iso_c_binding
+!    use, intrinsic :: iso_c_binding
     integer, parameter, public :: dp=kind(0.d0)
 
     interface
@@ -86,10 +86,10 @@ module faddeeva_fortran_interface
         !> @brief
         subroutine example(func, func_name, z, relerr)
             character(:), allocatable :: func_name
-            complex(dp) :: z, func
+            complex(dp) :: z
             real(dp) :: relerr
             interface
-                function func(z, relerr)
+                complex(kind(0.d0) function func(z, relerr)
                     complex(kind(0.d0)) :: z
                     real(kind(0.d0)) :: relerr
                 end function

@@ -36,14 +36,9 @@ cmake_dependent_option(BUILD_TESTING_${PROJECT_NAME}
         "BUILD_TESTING;NOT main_project" OFF
         )
 
-if (main_project AND NOT DEFINED BUILD_TESTING)
-    set(BUILD_TESTING ON)
-endif()
 
-if((main_project AND BUILD_TESTING) OR BUILD_TESTING_${PROJECT_NAME})
-    enable_testing()
-    add_subdirectory(src/tests)
-endif()
+
+
 
 # generate package config files
 include(GNUInstallDirs)

@@ -7,10 +7,10 @@ program Faddeeva_erf_test
     integer :: i
 
 
-    test_args = (/ cmplx(1_dp, 2_dp), cmplx(-1_dp, 2_dp) /)
-    ref_values = (/ cmplx(-0.5366435657785650339917955593141927494421, -5.049143703447034669543036958614140565553), &
-            cmplx(0.5366435657785650339917955593141927494421, -5.049143703447034669543036958614140565553) /)
-    relerr = 1e-6_dp
+    test_args = (/ cmplx(1_dp, 2_dp, dp), cmplx(-1_dp, 2_dp, dp) /)
+    ref_values = (/ cmplx(-0.5366435657785650339917955593141927494421_dp, -5.049143703447034669543036958614140565553_dp, dp), &
+            cmplx(0.5366435657785650339917955593141927494421_dp, -5.049143703447034669543036958614140565553_dp, dp) /)
+    relerr = 0.0_dp
     errmax = 0
     do i = 1, size(test_args)
         res(i) = Faddeeva_erf(test_args(i), relerr)
@@ -19,8 +19,8 @@ program Faddeeva_erf_test
         if (re_err(i) > errmax) errmax = re_err(i)
         if (im_err(i) > errmax) errmax = im_err(i)
 
-        !        if (errmax > 1e-13) then
-        if (errmax > relerr) then
+        if (errmax > 1e-13) then
+!        if (errmax > relerr) then
             print *, "FAILURE -- relative error", errmax, "is too large!"
             stop 1
         end if
