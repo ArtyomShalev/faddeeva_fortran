@@ -17,10 +17,10 @@ if (main_project AND NOT DEFINED BUILD_TESTING)
     set(BUILD_TESTING ON)
 endif()
 
-message(${main_project})
-message(${BUILD_TESTING})
+#message(${main_project})
+#message(${BUILD_TESTING})
 if((main_project AND BUILD_TESTING) OR BUILD_TESTING_${PROJECT_NAME})
-
+    message(${BUILD_TESTING})
     enable_testing()
     add_subdirectory(errfun_MIT/src/tests)
 endif()

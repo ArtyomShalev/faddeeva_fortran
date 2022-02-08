@@ -88,12 +88,12 @@ module faddeeva_fortran_interface
             character(:), allocatable :: func_name
             complex(dp) :: z
             real(dp) :: relerr
-            interface
-                complex(kind(0.d0) function func(z, relerr)
-                    complex(kind(0.d0)) :: z
-                    real(kind(0.d0)) :: relerr
-                end function
-            end interface
+!            interface
+!                complex(kind(0.d0)function func(z, relerr)
+!                    complex(kind(0.d0)) :: z
+!                    real(kind(0.d0)) :: relerr
+!                end function
+!            end interface
 
             ! good way
             print *, func_name, ' of argument z =', z, 'with relative error' , relerr, 'equals ', func(z, relerr)
@@ -105,4 +105,11 @@ module faddeeva_fortran_interface
             ! etc
 
         end subroutine example
+
+        real(dp) function find_relerr(a, b)
+            real(dp), intent(in) :: a, b
+
+            find_relerr = abs((b-a)/a)
+
+        end function find_relerr
 end module faddeeva_fortran_interface
