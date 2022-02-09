@@ -23,13 +23,6 @@ set(NAMESPACE "${PROJECT_NAME}::")
 # generate the library and install instructions
 add_subdirectory(src/lib)
 
-# testing
-if(${PROJECT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
-    set(main_project TRUE)
-else()
-    set(main_project FALSE)
-endif()
-
 include(CMakeDependentOption)
 cmake_dependent_option(BUILD_TESTING_${PROJECT_NAME}
         "Build the testing tree for project ${PROJECT_NAME}." OFF

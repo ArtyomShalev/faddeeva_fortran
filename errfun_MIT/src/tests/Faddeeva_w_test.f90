@@ -18,6 +18,9 @@ program Faddeeva_w_test
         res(i) = Faddeeva_w(Faddeeva_w_args(i), relerr)
         re_err(i) = find_relerr(real(res(i)), real(Faddeeva_w_wolfram_refs(i)))
         im_err(i) = find_relerr(aimag(res(i)), aimag(Faddeeva_w_wolfram_refs(i)))
+        print *, "w(", real(Faddeeva_w_args(i)),"+i*", aimag(Faddeeva_w_args(i)),") = ", real(res(i)),"+i*", &
+                aimag(res(i)), " (vs.", real(Faddeeva_w_wolfram_refs(i)),"+i*", aimag(Faddeeva_w_wolfram_refs(i)),"), &
+                re/im rel. err. = ", re_err(i),"/", im_err(i)
         if (re_err(i) > errmax) errmax = re_err(i)
         if (im_err(i) > errmax) errmax = im_err(i)
         if (errmax > 1e-13) then
@@ -25,4 +28,5 @@ program Faddeeva_w_test
             stop 1
         end if
     end do
+    print *, "SUCCESS (max relative error = ", errmax
 end program Faddeeva_w_test
