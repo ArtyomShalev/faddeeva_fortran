@@ -4,8 +4,8 @@ project(${PROJECTNAME} Fortran)
 
 add_subdirectory(Faddeeva_package)
 
-add_executable(main example.f90)
-target_link_libraries(main Faddeeva_package)
+add_executable(example example.f90)
+target_link_libraries(example Faddeeva_package)
 
 #if(${PROJECT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
 #    set(main_project TRUE)
