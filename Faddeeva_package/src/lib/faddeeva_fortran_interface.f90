@@ -1,5 +1,4 @@
 module faddeeva_fortran_interface
-!    use, intrinsic :: iso_c_binding
     integer, parameter, public :: dp=kind(0.d0)
 
     interface
@@ -85,24 +84,21 @@ module faddeeva_fortran_interface
     contains
         !> @brief
         subroutine example(func, func_name, z, relerr)
-            character(:), allocatable :: func_name
+            character(len=15), intent(in) :: func_name
             complex(dp) :: z
             real(dp) :: relerr
-!            interface
-!                complex(kind(0.d0)function func(z, relerr)
-!                    complex(kind(0.d0)) :: z
-!                    real(kind(0.d0)) :: relerr
-!                end function
-!            end interface
 
-            ! good way
+            interface AFunc
+                function func(z, relerr)
+                    use iso_c_binding
+                    complex(c_double_complex), value :: z
+                    real(c_double), value :: relerr
+                    complex(c_double_complex) :: func
+                end function
+            end interface
+
+            if (relerr < 2.22e-16) relerr = 2.22e-16 !according to https://en.wikipedia.org/wiki/Machine_epsilon
             print *, func_name, ' of argument z =', z, 'with relative error' , relerr, 'equals ', func(z, relerr)
-
-            ! not good way
-            if (func_name == 'Faddeeva_w') then
-                print *, func_name, ' of argument z =', z, 'with relative error' , relerr, 'equals ', Faddeeva_w(z, relerr)
-            end if
-            ! etc
 
         end subroutine example
 

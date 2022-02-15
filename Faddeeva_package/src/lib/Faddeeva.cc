@@ -676,12 +676,6 @@ static const double expa2n2[] = {
 };
 
 /////////////////////////////////////////////////////////////////////////
-cmplx my_function(cmplx z, double relerr)
-{
-    relerr = relerr;
-    z = z*z;
-    return z;
-}
 
 cmplx FADDEEVA(w)(cmplx z, double relerr)
 {
@@ -710,13 +704,14 @@ cmplx FADDEEVA(w)(cmplx z, double relerr)
   const double y = cimag(z), ya = fabs(y);
 
   cmplx ret = 0.; // return value
+
   double sum1 = 0, sum2 = 0, sum3 = 0, sum4 = 0, sum5 = 0;
 
 #define USE_CONTINUED_FRACTION 1 // 1 to use continued fraction for large |z|
 
 #if USE_CONTINUED_FRACTION
   if (ya > 7 || (x > 6  // continued fraction is faster
-                 /* As pointed out by M. zaghloul, the continued
+                 /* As pointed out by M. Zaghloul, the continued
                     fraction seems to give a large relative error in
                     Re w(z) for |x| ~ 6 and small |y|, so use
                     algorithm 816 in this region: */
