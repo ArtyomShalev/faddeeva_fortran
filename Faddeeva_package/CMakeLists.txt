@@ -29,6 +29,22 @@ cmake_dependent_option(BUILD_TESTING_${PROJECT_NAME}
         "BUILD_TESTING;NOT main_project" OFF
         )
 
+if(${PROJECT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
+    set(main_project TRUE)
+else()
+    set(main_project FALSE)
+endif()
+
+if (main_project AND NOT DEFINED BUILD_TESTING)
+    set(BUILD_TESTING ON)
+endif()
+
+
+if((main_project AND BUILD_TESTING) OR BUILD_TESTING_${PROJECT_NAME})
+    message(${BUILD_TESTING})
+    enable_testing()
+    add_subdirectory(src/tests)
+endif()
 
 
 
