@@ -1,6 +1,5 @@
 module faddeeva_fortran_interface
     integer, parameter, public :: dp=kind(0.d0)
-
     interface
         !> @brief the error function
         !!
@@ -97,7 +96,7 @@ module faddeeva_fortran_interface
                 end function
             end interface
 
-            if (relerr < 2.22e-16) relerr = 2.22e-16 !according to https://en.wikipedia.org/wiki/Machine_epsilon
+            if (relerr < 2.22e-16_dp) relerr = 2.22e-16_dp !according to https://en.wikipedia.org/wiki/Machine_epsilon
             print *, func_name, ' of argument z =', z, 'with relative error' , relerr, 'equals ', func(z, relerr)
 
         end subroutine example
