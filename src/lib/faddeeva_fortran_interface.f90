@@ -6,7 +6,7 @@ module faddeeva_fortran_interface
         !! computes erf(z), where erf - the error function
         !!
         !! @param[in]   z       a complex value
-        !! @param[in]   relerr  relative error
+        !! @param[in]   relerr  demanding relative error
         !! @return      a complex value of the mentioned function
         complex (c_double_complex) function Faddeeva_erf(z, relerr) bind(c, name = 'Faddeeva_erf')
             use iso_c_binding
@@ -19,7 +19,7 @@ module faddeeva_fortran_interface
         !! computes erfi(z) = -i*erf(i*z), where erf is the error function
         !!
         !! @param[in]   z       a complex value
-        !! @param[in]   relerr  relative error
+        !! @param[in]   relerr  demanding relative error
         !! @return      a complex value of the mentioned function
         complex (c_double_complex) function Faddeeva_erfi(z, relerr) bind(c, name = 'Faddeeva_erfi')
             use iso_c_binding
@@ -32,7 +32,7 @@ module faddeeva_fortran_interface
         !! computes erfc(z) = 1 - erf(z), where erf is the error function
         !!
         !! @param[in]   z       a complex value
-        !! @param[in]   relerr  relative error
+        !! @param[in]   relerr  demanding relative error
         !! @return      a complex value of the mentioned function
         complex (c_double_complex) function Faddeeva_erfc(z, relerr) bind(c, name = 'Faddeeva_erfc')
             use iso_c_binding
@@ -45,7 +45,7 @@ module faddeeva_fortran_interface
         !! computes erfcx(z) = exp(z*z)*erfc(z), where erfc is the complementary error function
         !!
         !! @param[in]   z       a complex value
-        !! @param[in]   relerr  relative error
+        !! @param[in]   relerr  demanding relative error
         !! @return      a complex value of the mentioned function
         complex (c_double_complex) function Faddeeva_erfcx(z, relerr) bind(c, name = 'Faddeeva_erfcx')
             use iso_c_binding
@@ -58,7 +58,7 @@ module faddeeva_fortran_interface
         !! computes w(z) = exp(-z*z)*erfc(-i*z), where erfc - the complementary error function
         !!
         !! @param[in]   z       argument
-        !! @param[in]   relerr  relative error !TODO add description
+        !! @param[in]   relerr  demanding relative error
         !! @return      a complex value of the mentioned function
         complex (c_double_complex) function Faddeeva_w(z, relerr) bind(c, name = 'Faddeeva_w')
             use iso_c_binding
@@ -71,7 +71,7 @@ module faddeeva_fortran_interface
         !! computes Dawson(z) = sqrt(pi)/2*exp(-z*z)*erfi(z), the erfi is the imaginary error function
         !!
         !! @param[in]   z       a complex value
-        !! @param[in]   relerr  relative error
+        !! @param[in]   relerr  demanding relative error
         !! @return      a complex value of the mentioned function
         complex (c_double_complex) function Faddeeva_dawson(z, relerr) bind(c, name = 'Faddeeva_Dawson')
             use iso_c_binding
@@ -81,7 +81,15 @@ module faddeeva_fortran_interface
     end interface
 
     contains
-        !> @brief
+        !> @brief provide an example of usage
+        !!
+        !! provide a terminal output of function name, input arguments,
+        !! demanding relative error and computational results
+        !!
+        !! @param[in]   func            a pointer to the function
+        !! @param[in]   func_name       function name as a string
+        !! @param[in]   z               a complex value
+        !! @param[in]   relerr          demanding relative error
         subroutine example(func, func_name, z, relerr)
             character(len=15), intent(in) :: func_name
             complex(dp) :: z
@@ -101,6 +109,11 @@ module faddeeva_fortran_interface
 
         end subroutine example
 
+        !> @brief define a relative error between two real input arguments
+        !!
+        !! @param[in]   a       real argument
+        !! @param[in]   b       real argument
+        !! @return      a relative error
         real(dp) function find_relerr(a, b)
             real(dp), intent(in) :: a, b
 
