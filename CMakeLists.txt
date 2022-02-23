@@ -8,7 +8,7 @@
 #
 # the config file is generatet in the build and install directories
 #TODO cmake version
-cmake_minimum_required(VERSION 3.19.2)
+cmake_minimum_required(VERSION 3.16.3)
 project(Faddeeva_fortran VERSION 2.0.3 LANGUAGES Fortran C)
 
 # seach path for additional cmake modules
