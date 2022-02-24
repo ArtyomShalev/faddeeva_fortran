@@ -56,7 +56,7 @@ file except Inf and NaN according they are not supported in Fortran 90. Referenc
 ## More resources
 
 It may be useful to look at [example of using Faddeeva_fortran
-as git submodule](....)
+as git submodule](https://github.com/ArtyomShalev/fortran_faddeeva_usage_example.git)
 
 
 ## About
