@@ -1,15 +1,15 @@
 # The target of the library Faddeeva_fortran is exported
-# as Faddeeva_fortran::Faddeeva_fortran to a package config file for Faddeeva_fortran
+# as faddeeva_fortran::faddeeva_fortran to a package config file for faddeeva_fortran
 #
 # usage:
-#     find_package(Faddeeva_fortran)
+#     find_package(faddeeva_fortran)
 #     ...
-#     target_link_library(<target> Faddeeva_fortran)
+#     target_link_library(<target> faddeeva_fortran)
 #
 # the config file is generatet in the build and install directories
 #TODO cmake version
 cmake_minimum_required(VERSION 3.16.3)
-project(Faddeeva_fortran VERSION 2.0.3 LANGUAGES Fortran C)
+project(faddeeva_fortran VERSION 2.0.3 LANGUAGES Fortran C)
 
 # seach path for additional cmake modules
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake/Modules)

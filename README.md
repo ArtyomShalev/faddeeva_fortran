@@ -1,7 +1,7 @@
-# Faddeeva_fortran
+# faddeeva_fortran
 
 This project provides the [MIT Faddeeva package](http://ab-initio.mit.edu/wiki/index.php/Faddeeva_Package) 
-interface to FORTRAN programming language. 
+interface to Fortran programming language. 
 
 ## Description
 
@@ -16,27 +16,41 @@ This project is not independent. It provides the Fortran module with
 various error functions of arbitrary complex arguments. 
 
 ### Prerequisites
+* cmake 3.16.3 or higher
+* GNU Fortran/gcc (tested for Ubuntu 20.04.1) or other fortran/c++ compilers
 
-gcc, gfortran, cmake version 3.16.3 or higher.
+### Installation and linking to your project
+See [example project](https://github.com/ArtyomShalev/fortran_faddeeva_usage_example.git)
+or follow the instructions below
+<pre><code>
+git clone https://github.com/ArtyomShalev/faddeeva_fortran.git
+</pre></code>
+or as git submodule
+<pre><code>
+cd >your_main_project<
+git submodule add https://github.com/ArtyomShalev/faddeeva_fortran.git 
+</pre></code>
+Add lines to your main CMakeLists.txt file
+<pre><code>
+add_subdirectory(faddeeva_fortran)
+target_link_libraries(>your targets< faddeeva_fortran::faddeeva_fortran) 
+</pre></code>
 
-### Installation
-
-> git clone https://github.com/ArtyomShalev/Faddeeva_fortran.git
-
-or as git submodule(see example project in "More resources")
-
-> cd <your_main_project>
-> 
-> git submodule add https://github.com/ArtyomShalev/Faddeeva_fortran.git 
+### Local installation
+<pre><code>
+git clone https://github.com/ArtyomShalev/faddeeva_fortran.git
+cd faddeeva_fortran
+cmake .
+make
+</pre></code>
 
 ## Documentation
 To generate documentation in html and latex formats 
 doxygen should be installed and one needs:
-
-> cd docs
-> 
-> doxygen config
-
+<pre><code>
+cd docs
+doxygen config
+</pre></code>
 The generated HTML documentation can be viewed by pointing a HTML browser to the index.html file in the
 html directory. The generated LATEX documentation must first be compiled by a LATEX compiler.
 ## Tests
@@ -46,20 +60,13 @@ Test complex arguments were borrowed from original source Faddeeva.cc
 file except Inf and NaN according they are not supported in Fortran 90. Reference values were computed by WolframAlpha.
 
 ### Launching the tests
-
-> cmake .
-> 
-> make
-> 
-> ctest
-
-## More resources
-
-It may be useful to look at [example of using Faddeeva_fortran
-as git submodule](https://github.com/ArtyomShalev/fortran_faddeeva_usage_example.git)
-
+<pre><code>
+cmake .
+make
+ctest
+</pre></code>
 
 ## About
 
 This project was done with the assistance of [Konstantin 
-Ladutenko](https://github.com/kostyfisik).
+Ladutenko](https://github.com/kostyfisik). 
