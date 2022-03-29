@@ -7,7 +7,7 @@
 #     target_link_library(<target> faddeeva_fortran)
 #
 # the config file is generatet in the build and install directories
-#TODO cmake version
+
 cmake_minimum_required(VERSION 3.16.3)
 project(faddeeva_fortran VERSION 2.0.3 LANGUAGES Fortran C)
 
